@@ -30,7 +30,7 @@ toggleFormatBtn.addEventListener("click", () => {
 });
 
 // Timer functionality
-let timerInterval, timerSeconds = 0, isTimerRunning = false;
+let timerInterval, timerSeconds = 0, isTimerRunning = false, isTimerPaused = false;
 
 function updateTimerDisplay() {
     const hours = Math.floor(timerSeconds / 3600);
@@ -51,9 +51,19 @@ document.getElementById("startTimer").addEventListener("click", () => {
     }
 });
 
-document.getElementById("pauseTimer").addEventListener("click", () => {
-    clearInterval(timerInterval);
-    isTimerRunning = false;
+document.getElementById("pauseTimer").addEventListener("click", (e) => {
+    if (isTimerRunning && !isTimerPaused) {
+        clearInterval(timerInterval);
+        isTimerPaused = true;
+        e.target.textContent = "Resume";
+    } else if (isTimerRunning && isTimerPaused) {
+        timerInterval = setInterval(() => {
+            timerSeconds++;
+            updateTimerDisplay();
+        }, 1000);
+        isTimerPaused = false;
+        e.target.textContent = "Pause";
+    }
 });
 
 document.getElementById("stopTimer").addEventListener("click", () => {
@@ -61,10 +71,12 @@ document.getElementById("stopTimer").addEventListener("click", () => {
     timerSeconds = 0;
     updateTimerDisplay();
     isTimerRunning = false;
+    isTimerPaused = false;
+    document.getElementById("pauseTimer").textContent = "Pause";
 });
 
 // Countdown functionality
-let countdownInterval, countdownSeconds = 0, isCountdownRunning = false;
+let countdownInterval, countdownSeconds = 0, isCountdownRunning = false, isCountdownPaused = false;
 
 function updateCountdownDisplay() {
     const hours = Math.floor(countdownSeconds / 3600);
@@ -93,9 +105,24 @@ document.getElementById("startCountdown").addEventListener("click", () => {
     }
 });
 
-document.getElementById("pauseCountdown").addEventListener("click", () => {
-    clearInterval(countdownInterval);
-    isCountdownRunning = false;
+document.getElementById("pauseCountdown").addEventListener("click", (e) => {
+    if (isCountdownRunning && !isCountdownPaused) {
+        clearInterval(countdownInterval);
+        isCountdownPaused = true;
+        e.target.textContent = "Resume";
+    } else if (isCountdownRunning && isCountdownPaused) {
+        countdownInterval = setInterval(() => {
+            if (countdownSeconds > 0) {
+                countdownSeconds--;
+                updateCountdownDisplay();
+            } else {
+                clearInterval(countdownInterval);
+                isCountdownRunning = false;
+            }
+        }, 1000);
+        isCountdownPaused = false;
+        e.target.textContent = "Pause";
+    }
 });
 
 document.getElementById("stopCountdown").addEventListener("click", () => {
@@ -103,4 +130,6 @@ document.getElementById("stopCountdown").addEventListener("click", () => {
     countdownSeconds = 0;
     updateCountdownDisplay();
     isCountdownRunning = false;
+    isCountdownPaused = false;
+    document.getElementById("pauseCountdown").textContent = "Pause";
 });
