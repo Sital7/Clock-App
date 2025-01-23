@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock App</title>
+    <link rel="stylesheet" href="clock.css">
+</head>
+<body>
+    <div class="hero">
+       
+        <div class="container" id="clockSection">
+            <div class="clock">
+                <img src="assets/ar2.png" id="showCountdown" style="cursor: pointer;"> <!-- Click this for countdown section -->
+                <span id="hrs">00</span>
+                <span>:</span>
+                <span id="min">00</span>
+                <span>:</span>
+                <span id="sec">00</span>
+                <span id="period" style="font-size: 40px; margin-left: 10px;"></span>
+                <img src="assets/ar1.png" id="showTimer" style="cursor: pointer;"> <!-- Click this for timer section -->
+            </div>
+            <div class="button-container">
+                <button id="toggleFormat">Switch to 12-hour format</button>
+            </div>
+        </div>
+
+        
+<div class="container" id="countdownSection" style="display: none;">
+    <div class="countdown">
+        <h2>Countdown Timer</h2>
+        <input type="number" id="countdownInput" placeholder="Enter seconds" min="1" max="100000">
+        <div class="countdown-display" id="countdownDisplay">00:00:00</div>
+        <div class="button-container">
+            <button id="startCountdown">Start</button>
+            <button id="pauseCountdown">Pause</button>
+            <button id="stopCountdown">Stop</button>
+            <button id="backToClockCountdown">Back to Clock</button> 
+        </div>
+    </div>
+</div>
+
+
+<div id="timerSection" style="display: none;">
+    <h2>Timer</h2>
+    <div id="timerDisplay">00:00:00</div>
+    <button id="startTimer">Start</button>
+    <button id="pauseResumeTimer">Pause</button>
+    <button id="stopTimer">Stop</button>
+    <button id="backToClockTimer">Back to Clock</button> 
+
+        
+    </div>
+    <script src="clock.js"></script>
+</body>
+</html>
