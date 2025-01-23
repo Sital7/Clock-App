@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,3 +55,48 @@
     <script src="clock.js"></script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock App</title>
+    <link rel="stylesheet" href="clock.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Clock -->
+        <div class="clock">
+            <span id="hrs" class="time">00</span>
+            <span>:</span>
+            <span id="min" class="time">00</span>
+            <span>:</span>
+            <span id="sec" class="time">00</span>
+            <span id="period" class="time"></span>
+        </div>
+        <button id="toggleFormat"> 12/24 Hour</button>
+
+        <!-- Timer -->
+        <div class="section">
+            <h2>Timer</h2>
+            <div id="timerDisplay">00:00:00</div>
+            <button id="startTimer">Start</button>
+            <button id="pauseTimer">Pause</button>
+            <button id="stopTimer">Stop</button>
+        </div>
+
+        <!-- Countdown -->
+        <div class="section">
+            <h2>Countdown</h2>
+            <input type="number" id="countdownInput" placeholder="Enter seconds (max 100000)">
+            <div id="countdownDisplay">00:00:00</div>
+            <button id="startCountdown">Start</button>
+            <button id="pauseCountdown">Pause</button>
+            <button id="stopCountdown">Stop</button>
+        </div>
+    </div>
+    <script src="clock.js"></script>
+</body>
+</html>
+>>>>>>> efc0a9d321131d944deac3509989317f735294ef
